@@ -9,21 +9,30 @@ import { PeopleService } from '../people.service';
    `
    <ul>
    <li *ngFor="let person of people">
-     {{person.name}}
+      <a href="#" (click)="selectPerson(person)">
+      {{person.name}}
+      </a>
    </li>
  </ul>
-  `,
-  styleUrls: ['./people-list.component.scss']
+ <app-person-details [person]="selectedPerson"></app-person-details>
+
+  `
 })
 export class PeopleListComponent implements OnInit {
+  selectedPerson: Person;
   people: Person[];
 
   constructor(private peopleService: PeopleService) {
-      this.people = peopleService.getAll();
+
   }
 
   ngOnInit() {
+    this.people = this.peopleService.getAll();
+  }
 
+    // HERE is the new method
+  selectPerson(person: Person){
+      this.selectedPerson = person;
   }
 
 }

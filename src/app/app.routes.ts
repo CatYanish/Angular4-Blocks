@@ -1,8 +1,5 @@
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { PeopleListComponent } from './people-list/people-list.component';
-
-
-
 
 const routes: Routes = [
   // map '/persons' to the people list component
@@ -17,3 +14,5 @@ const routes: Routes = [
     pathMatch: 'full'
   },
 ];
+
+export const appRouterModule = RouterModule.forRoot(routes);
